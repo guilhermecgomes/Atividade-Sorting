@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define Max 4001
+#define Max 41
 
 typedef struct {
       int tamanho;
@@ -64,7 +64,6 @@ void mostrarLista(ListaInt *ap){
      printf("\n");
 }
 
-
 int separa_pf (ListaInt *ap, int l, int r){
     int pivo = ap->vetor[l];
     int i = l+1;
@@ -92,11 +91,9 @@ void quicksort(ListaInt *ap, int p, int r){
      }  // fim if
 }
 
-
-
 void ordenarListaCrescenteS(ListaInt *ap){    /* idéia: localizar o menor e colocar no seu lugar */
      int i,j,min,n,aux;
-     printf(" \n\n\n");     printf("           SelectionSort ");
+     printf(" \n\n\n");     printf("		SelectionSort ");
      n = ap->tamanho;               /* n = quantidade de elementos da lista */
      for(i=1;i<n;i++){                 
          min = i;                   /* min = local onde se encontra o menor */
@@ -107,7 +104,7 @@ void ordenarListaCrescenteS(ListaInt *ap){    /* idéia: localizar o menor e colo
 
 void ordenarListaCrescenteB(ListaInt *ap){    /* bolha: trocar pares consecutivos fora da ordem */
      int i,j,fim,n,aux;
-     printf(" \n\n\n");     printf("           BubbleSort ");
+     printf(" \n\n\n");     printf("		BubbleSort ");
      n = ap->tamanho; /* n = quantidade de elementos da lista */
      fim = n-1;               
      for(i=1;i<n;i++)   /* n-1 etapas  */
@@ -119,10 +116,9 @@ void ordenarListaCrescenteB(ListaInt *ap){    /* bolha: trocar pares consecutivo
          } // fim for j
 }
 
-
 void ordenarListaCrescenteI(ListaInt *ap){    /* ordenação por inserção */
      int i,k,n,aux;
-     printf(" \n\n\n");     printf("           Insertion Sort ");
+     printf(" \n\n\n");     printf("		Insertion Sort ");
      n = ap->tamanho; /* n = quantidade de elementos da lista */
      for(i=2;i<n+1;i++){   
          aux = ap->vetor[i];
@@ -130,4 +126,18 @@ void ordenarListaCrescenteI(ListaInt *ap){    /* ordenação por inserção */
          while ((k>0) && (ap->vetor[k] > aux)) {ap->vetor[k+1] = ap->vetor[k]; k = k - 1;}
          ap->vetor[k+1] = aux;
      } // fim for i
+}
+
+void ordenarListaDecrescenteB(ListaInt *ap){    /* bolha: trocar pares consecutivos fora da ordem */
+     int i,j,fim,n,aux;
+     printf(" \n\n\n");     printf("		BubbleSort ");
+     n = ap->tamanho; /* n = quantidade de elementos da lista */
+     fim = n-1;               
+     for(i=1;i<n;i++)   /* n-1 etapas  */
+         for(j=1;j<fim+1; j++){      /* comparar/trocar do primeiro ao penultimo */
+            if (ap->vetor[j] > ap->vetor[j+1]){
+                aux = ap->vetor[j]; ap->vetor[j] = ap->vetor[j+1]; ap->vetor[j+1] = aux;
+            }; // fim if
+            fim = fim--;
+         } // fim for j
 }
